@@ -1,0 +1,60 @@
+tugas 1 :
+terdapat sebuah nilai : 
+a. jika nilai > 70: return a
+b. jika nilai > 40: return b
+c. jika nilai > 0: return c
+d. selain itu return teks kosong
+
+jawab :
+langkah pertama : saya membuat sebuah variabel nilai yang berisikan tipe data integer dan bernilai 80
+                    int nilai = 80;
+
+langkah kedua : saya menggunakan percabangan if-else if yang dimana 
+                apabila > 70 maka menggunakan percabangan if 
+                kemudian > 40 maka menggunakan percabangan else if dan berlaku juga untuk > 0
+                lalu untuk nilai < 0 atau = 0 maka menggunakan else. 
+                if (nilai > 70) {
+                    print('A');
+                } else if (nilai > 40) {
+                    print('B');
+                } else if (nilai > 0) {
+                    print('C');
+                } else {
+                    print('');
+                }
+output : A
+
+tugas 2 : 
+tampilkan nilai faktorial dari : 10, 20, 30
+
+jawab : 
+langkah pertama : saya membuat sebuah variabel angka yang berisikan tipe data integer dan bernilai 10,20,30
+                    int angka = 10;
+                    int angka1 = 20;
+                    int angka2 = 30;
+
+langkah kedua : menampilkan angka bilangan dengan cara 
+                print('Masukkan Angka Bilangan : $angka');
+                print('Masukkan Angka Bilangan : $angka1');
+                print('Masukkan Angka Bilangan : $angka2');
+
+langkah ketiga : menampilkan hasil faktorial dari angka adalah 
+                    print("hasil faktorial dari $angka adalah ${faktorial(10)}");
+                    print("hasil faktorial dari $angka1 adalah ${faktorial(20)}");
+                    print("hasil faktorial dari $angka2 adalah ${faktorial(30)}");
+
+langkah keempat : membuat function integer kemudian menggunakan percabangan if dan mengembalikkan nilai 1
+                    int faktorial(int a) {
+                        if (a == 0) {
+                            return 1;
+                        }
+                        return a * faktorial(a - 1);
+                    }
+
+output : 
+Masukkan Angka Bilangan : 10
+Masukkan Angka Bilangan : 20
+Masukkan Angka Bilangan : 30
+hasil faktorial dari 10 adalah 3628800
+hasil faktorial dari 20 adalah 2432902008176640000
+hasil faktorial dari 30 adalah -8764578968847253504
