@@ -1,0 +1,36 @@
+tugas 2 :
+buatlah sebuah list dengan : 
+a. tiap element berupa list juga
+b. tiap element wajib terdapat 2 data (sub-element)
+
+Jawab : 
+langkah pertama : disini saya membuat sebuah list nama dan umur 
+                    List nama = ['Diva', 'Jojo', 'Miya', 'Snowy'];
+                    List umur = [20, 21, 20, 21];
+langkah kedua : kemudian tampilkan saja list nama dan umur seperti berikut 
+                    print('Nama mahasiswa : ');
+                    print(nama);
+                    print('Umur mahasiswa : ');
+                    print(umur);
+Output : 
+Nama mahasiswa : 
+[Diva, Jojo, Miya, Snowy]
+Umur mahasiswa : 
+[20, 21, 20, 21]
+
+buat sebuah map dengan menggunakan list tersebut : 
+Jawab : 
+langkah pertama : tampilkan terlebih dahulu daftar mahasiswa
+                    print('Daftar Mahasiswa : ');
+langkah kedua : buat key memiliki tipe data String dan value memiliki tipe data dynamic dan tampilkan variabel data.
+                    Map<String, dynamic> data = {'nama': 'Diva', 'umur': 20};
+                    print(data);
+
+Output : 
+Nama mahasiswa : 
+[Diva, Jojo, Miya, Snowy]
+Umur mahasiswa : 
+[20, 21, 20, 21]
+Daftar Mahasiswa : 
+{nama: Diva, umur: 20}
+
