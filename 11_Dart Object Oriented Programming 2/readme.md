@@ -1,82 +1,70 @@
-# (07) Branching, Looping, Function 
+# (11) Dart Object Oriented Programming 2
 ## Data Diri
 Nomor Urut : 1_019FLC_34
+
 Nama : Rayi Handiva Putri
 
-### Pengambilan Keputusan
-> Menentukan alur program pada kondisi tertentu
+## 1. Method Overriding
+> **Method Overriding** bertujuan agar class memiliki method yang sama dengan proses yang berbeda dan menulis ulang method yang ada pada superclass.
 
-**1. IF**
-- Memerlukan nilai bool (dari operator logical atau comparison)
-- Menjalankan bagian proses jika nilai bool bernilai true
+### Melakukan Overriding
+- Dilakukan pada class yang melakukan inheritance
+- Method sudah ada pada class induk
+- Method ditulis ulang seperti membuat method baru pada class anak
+- Ditambahkan tanda @override dibaris sebelum method dibuat
 
-Ditulis dengan :
+### Penggunaan Class
+Proses membuat object dari class yang terjadi inheritance seperti pembuatan object pada umumnya. 
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
+void main() {
+    var k1 = Kambing();
+    k1.reproduksi();
+    k1.bernapas();
+
+    var h1 = Hewan();
+    h1.reproduksi();
+    h1.bernapas();
+    
 }
 ```
-**2. IF-ELSE**
-- Berjalan dengan if
-- Menambah alternatif jika nilai bool adalah false
 
-Ditulis dengan :
+## 2. Interface
+> - Berupa class
+> - Menunjukkan method apa saja yang ada pada suatu class
+> - Seluruh method wajib di-override
+> - Digunakan dengan menggunakan implements
+
+### Menggunakan Interface
+- Sekilas mirip inheritance
+- Pada class yang melakukan implements, wajib melakukan override semua method yang ada pada class induk
+
+### Penggunaan Class
+Proses membuat object dari class yang terjadi inheritance seperti pembuatan object pada umumnya. 
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
-} else {
-    // proses jika nilai_bool adalah false
+void main() {
+    var k1 = Kambing();
+    k1.reproduksi();
+    k1.bernapas();
+
+    var h1 = Hewan();
+    h1.reproduksi();
+    h1.bernapas();
+    
 }
 ```
-**3. ELSE-IF**
-- Berjalan dengan if
-- Menambah alternatif jika nilai bool adalah false
-- Menambah pengujian nilai bool lain
 
-Ditulis dengan :
+## 3. Polymorphism
+> - Kemampuan data berubah menjadi bentuk lain
+> - Tipe data yang dapat digunakan adalah super class
+> - Dapat dilakukan pada class dengan extends atau implements
+
+### Melakukan Polymorphism
+Object dari class Kambing dengan tipe data class Hewan  
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
-} else if (nilai_bool1) {
-    // proses jika nilai_bool adalah false 
-    // dan nilai_bool1 adalah true
+void main() {
+
+    Hewan k1 = Kambing();
+    k1.reproduksi();
+    k1.bernapas();
 }
 ```
-## Perulangan
-> Menjalankan proses berulang kali
-
-**1. FOR**
-- Diketahui berapa kali perulangan terjadi 
-- Memerlukan nilai awal
-- Memerlukan nilai bool, jika true maka perulangan dilanjutkan
-- Memerlukan pengubah nilai
-
-Ditulis dengan :
-```
-for (nilai_awal; nilai_bool; pengubah_nilai_awal) {
-    // proses berulang jika nilai_bool adalah true
-}
-```
-**2. WHILE**
-- Tidak diketahui berapa kali perulangan terjadi 
-- Memerlukan nilai bool, jika true maka perulangan dilanjutkan 
-
-Ditulis dengan :
-```
-while (nilai_bool) {
-    // proses berulang jika nilai_bool adalah true
-}
-```
-**3. DO-WHILE**
-- Mengubah bentuk while
-- Proses dijalankan minimum sekali, akan diteruskan jika nilai bool adalah true
-
-Ditulis dengan :
-```
-do {
-    // proses berulang jika nilai_bool adalah true
-} while (nilai_bool);
-```
-
-### Break dan Continue
-> Cara lain menghentikan perulangan.
