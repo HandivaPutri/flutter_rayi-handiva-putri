@@ -1,82 +1,71 @@
-# (07) Branching, Looping, Function 
+# (10) Dart Object Oriented Programming
 ## Data Diri
 Nomor Urut : 1_019FLC_34
+
 Nama : Rayi Handiva Putri
 
-### Pengambilan Keputusan
-> Menentukan alur program pada kondisi tertentu
+## 1. Deskripsi
+> **Dart Object Oriented Programming** merupakan program disusun dalam bentuk abtsraksi object, data dan proses diletakkan pada abstraksi tersebut dan biasa disebut dengan OOP.
 
-**1. IF**
-- Memerlukan nilai bool (dari operator logical atau comparison)
-- Menjalankan bagian proses jika nilai bool bernilai true
+### Keuntungan
+Berikut adalah keuntungan dalam Dart Object Oriented Programming :
+- Mudah di troubleshoot
+- Mudah digunakan ulang
 
-Ditulis dengan :
+### Penggunaan
+Dart dan berbagai bahasa pemrograman lainnya, seperti : C++, Java, Javascript, Python
+
+### Komponen
+OOP memiliki beberapa bagian, diantaranya : Class, Object, Property, Method, Inheritance, Generics.
+
+## 2. Class
+> - Abstraksi dari sebuah benda (object)
+> - Memiliki ciri-ciri yang disebut property
+> - Memiliki sifat dan kemampuan yang disebut method
+
+### Membuat Class
+- Menggunakan kata kunci _class_
+- Memiliki nama
+- Detail class diletakkan dalam kurawal 
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
+class Hewan {
+    // property
+    // method
 }
 ```
-**2. IF-ELSE**
-- Berjalan dengan if
-- Menambah alternatif jika nilai bool adalah false
 
-Ditulis dengan :
+### Membuat Object 
+- Bentuk sebenarnya dari class
+- Disebut juga instance of class
+- Diperlakukan seperti data
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
-} else {
-    // proses jika nilai_bool adalah false
+void main () {
+    var h1 = Hewan();
+    var h2 = Hewan();
+    var h3 = Hewan();
 }
 ```
-**3. ELSE-IF**
-- Berjalan dengan if
-- Menambah alternatif jika nilai bool adalah false
-- Menambah pengujian nilai bool lain
 
-Ditulis dengan :
+## 3. Method
+> - Sifat suatu class
+> - Aktivitas yang dapat dikerjakan suatu class
+> - Memiliki sifat seperti fungsi
+
+### Membuat Method
+> Seperti fungsi tetapi terletak dalam sebuah class
 ```
-if (nilai_bool) {
-    // proses jika nilai_bool adalah true
-} else if (nilai_bool1) {
-    // proses jika nilai_bool adalah false 
-    // dan nilai_bool1 adalah true
+class Hewan {
+    void bersuara() {
+        print('');
+    }
 }
 ```
-## Perulangan
-> Menjalankan proses berulang kali
 
-**1. FOR**
-- Diketahui berapa kali perulangan terjadi 
-- Memerlukan nilai awal
-- Memerlukan nilai bool, jika true maka perulangan dilanjutkan
-- Memerlukan pengubah nilai
-
-Ditulis dengan :
+### Menjalankan Method
+> Seperti menggunakan fungsi tetapi melalui sebuah object
 ```
-for (nilai_awal; nilai_bool; pengubah_nilai_awal) {
-    // proses berulang jika nilai_bool adalah true
+void main () {
+    var h1 = Hewan();
+    h1.bersuara();
 }
 ```
-**2. WHILE**
-- Tidak diketahui berapa kali perulangan terjadi 
-- Memerlukan nilai bool, jika true maka perulangan dilanjutkan 
-
-Ditulis dengan :
-```
-while (nilai_bool) {
-    // proses berulang jika nilai_bool adalah true
-}
-```
-**3. DO-WHILE**
-- Mengubah bentuk while
-- Proses dijalankan minimum sekali, akan diteruskan jika nilai bool adalah true
-
-Ditulis dengan :
-```
-do {
-    // proses berulang jika nilai_bool adalah true
-} while (nilai_bool);
-```
-
-### Break dan Continue
-> Cara lain menghentikan perulangan.
