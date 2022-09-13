@@ -1,0 +1,120 @@
+Tugas 1 : 
+langkah pertama : membuat terlebih dahulu class yang bernama BangunRuang yang terdiri dari panjang, lebar, tinggi dan contructor volume.
+                    class BangunRuang {
+                        int panjang = 10;
+                        int lebar = 5;
+                        int tinggi = 2;
+                        int? v;
+
+                        volume() {
+                            v = panjang * lebar * tinggi;
+                            return v;
+                        }
+                    }
+langkah kedua : untuk kubus, masukkan sisi dan volume sisinya.
+                class BangunRuang {
+                    int panjang = 10;
+                    int lebar = 5;
+                    int tinggi = 2;
+                    int sisi = 7;
+                    int? v;
+                    int? s;
+
+                    volume() {
+                        v = panjang * lebar * tinggi;
+                        return v;
+                    }
+
+                    volumekubus() {
+                        s = sisi * sisi * sisi;
+                        return s;
+                    }
+                }
+langkah ketiga : buat extends Balok dan Kubus menggunakan method overriding. 
+                    class Balok extends BangunRuang {
+                    @override
+                    volume() {
+                        // TODO: implement volume
+                        return super.volume();
+                    }
+                    }
+
+                    class Kubus extends BangunRuang {
+                    @override
+                    volumekubus() {
+                        // TODO: implement volumekubus
+                        return super.volumekubus();
+                    }
+                    }
+langkah keempat : panggil volume balok dan kubus dengan cara
+                    void main(List<String> args) {
+                    BangunRuang bangun = BangunRuang();
+                    print('Volume balok : ');
+                    print(bangun.volume());
+                    print('Volume kubus : ');
+                    print(bangun.volumekubus());
+                    }
+Output : 
+Volume balok : 
+100
+Volume kubus : 
+343
+
+Tugas 2 :
+langkah pertama : membuat class bernama Matematika dan terdiri dari hasil()
+                    class Matematika {
+                    hasilfpb(int x, int y) {
+                        int i;
+                        if (x > y) {
+                        i = x;
+                        x = y;
+                        y = i;
+                        }
+                        while (x > 0) {
+                        i = y % x;
+                        y = x;
+                        x = i;
+                        }
+                        return y;
+                    }
+
+                    hasilkpk(int x, int y) {
+                        int i;
+                        if (x > y) {
+                        i = x;
+                        x = y;
+                        y = i;
+                        }
+                        for (i = y; i % x != 0 || i % y != 0; i++);
+                        return i;
+                    }
+                    }
+langkah kedua : buat class KPK dan FPB yang nantinya akan diimplementasikan ke Matematika
+                class FPB extends Matematika {
+                @override
+                hasilfpb(int x, int y) {
+                    // TODO: implement hasilfpb
+                    return super.hasilfpb(x, y);
+                }
+                }
+
+                class KPK extends Matematika {
+                @override
+                hasilkpk(int x, int y) {
+                    // TODO: implement hasilkpk
+                    return super.hasilkpk(x, y);
+                }
+                }
+langkah ketiga : panggil KPK dan FPB dengan cara
+                    void main(List<String> args) {
+                    Matematika operation = Matematika();
+                    print('FPB : ');
+                    print(operation.hasilfpb(12, 16));
+                    print('KPK : ');
+                    print(operation.hasilkpk(12, 16));
+                    }
+Output : 
+FPB : 
+4
+KPK : 
+48
