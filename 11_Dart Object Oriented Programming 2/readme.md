@@ -68,3 +68,50 @@ void main() {
     k1.bernapas();
 }
 ```
+
+## 4. Constructor
+> - Method yang dijalankan saat pembuatan object
+> - Dapat menerima parameter
+> - Tidak memiliki return
+> - Nama sama dengan nama class
+
+### Memberi Constructor
+Tambahkan method menggunakan nama sama dengan nama class.   
+```
+class Hewan {
+    var mata;
+    var kaki;
+
+    Hewan() {
+        mata = 0;
+        kaki = 0;
+    }
+}
+```
+
+## 5. Inheritance
+> - Membuat class baru dengan memanfaatkan class yang sudah ada
+> - Bertujuan agar kemampuan class yang sudah ada dapat dimiliki oleh class baru
+
+### Melakukan Inheritance
+Menambah **extends** saat pembuatan class baru   
+```
+class Kambing extends Hewan {
+    Kambing() {
+        mata = 2;
+        kaki = 4;
+    }
+}
+```
+
+### Penggunaan Class
+Proses membuat object dari class yang terjadi inheritance seperti pembuatan object pada umumnya.    
+```
+void main(){
+    var k1 = Kambing();
+    print(k1.mata);
+
+    var h1 = Hewan();
+    print(h1.mata);
+}
+```
