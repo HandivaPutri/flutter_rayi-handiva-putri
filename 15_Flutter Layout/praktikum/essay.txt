@@ -1,0 +1,194 @@
+Task 1 : membuat tampilan menggunakan listview
+Answer : 
+langkah pertama : membuat listview menggunakan JSON. Kemudian konfigurasi http.dart package di pubspec.yml	
+                    dependencies:
+                    http: ^0.12.0
+                    flutter:
+                        sdk: flutter
+langkah kedua : import material.dart, dart:convert, http.dart package di dalam main.dart file
+                    import 'package:flutter/material.dart';
+                    import 'dart:convert';
+                    import 'package:http/http.dart' as http;
+langkah ketiga : Buat void main method runApp(). Lalu Buat class bernama MyApp extends with StatelessWidget dan di dalam class itu terdapat class JSONListView untuk ke lengkah selanjutnya.
+                    void main() => runApp(MyApp()); 
+                    
+                    class MyApp extends StatelessWidget {
+                        @override
+                        Widget build(BuildContext context) {
+                            return MaterialApp(
+                            home: Scaffold(
+                            body: Center(
+                            child: JSONListView()
+                            ),
+                        ));
+                        }
+                    }
+langkah keempat : Buat nama kelas yaitu GetUsers dan terdapat 4 variabel yaitu id, nama, email dan password. 
+                    class GetUsers {
+                    int id;
+                    String name;
+                    String email;
+                    String phoneNumber;
+                    
+                    GetUsers({
+                        this.id,
+                        this.name,
+                        this.email,
+                        this.phoneNumber
+                    });
+                    
+                    factory GetUsers.fromJson(Map<String, dynamic> json) {
+                        return GetUsers(
+                        id: json['id'],
+                        name: json['name'],
+                        email: json['email'],
+                        phoneNumber: json['phone']
+                        );
+                    }
+                    }
+langkah kelima : membuat class bernama JSONListView extends StatefulWidget dan CustomJSONListView createState()
+                    class JSONListView extends StatefulWidget {
+                    CustomJSONListView createState() => CustomJSONListView();
+                    }
+langkah keenam : membuat final variabel String bernama apiURL dan membuat function async yaitu fetchJSONData() di dalam List GetUsers
+                    final String apiURL = 'https://jsonplaceholder.typicode.com/users';
+                    Future<List<GetUsers>> fetchJSONData() async {
+                    
+                        var jsonResponse = await http.get(apiURL);
+                    
+                        if (jsonResponse.statusCode == 200) {
+                    
+                        final jsonItems = json.decode(jsonResponse.body).cast<Map<String, dynamic>>();
+                    
+                        List<GetUsers> usersList = jsonItems.map<GetUsers>((json) {
+                            return GetUsers.fromJson(json);
+                        }).toList();
+                    
+                        return usersList;
+                        
+                        } else {
+                        throw Exception('Failed to load data from internet');
+                        }
+                    }
+langkah ketujuh : buat Widget build di kelas CustomJSONListView.
+                    Widget build(BuildContext context) {
+                        return Scaffold(
+                        appBar: AppBar(
+                            title: Text('JSON ListView in Flutter'),
+                        ),
+                        body: FutureBuilder<List<GetUsers>>(
+                            future: fetchJSONData(),
+                            builder: (context, snapshot) {
+                    
+                            if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+                    
+                            return ListView(
+                                children: snapshot.data
+                                .map((user) => ListTile(
+                                    title: Text(user.name),
+                                    onTap: (){ print(user.name); },
+                                    subtitle: Text(user.phoneNumber),
+                                    leading: CircleAvatar(
+                                        backgroundColor: Colors.green,
+                                        child: Text(user.name[0],
+                                        style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                        )),
+                                    ),
+                                    ),
+                                )
+                                .toList(),
+                            );
+                            },
+                        ),
+                        );
+                    }
+
+Task 2 : membuat tampilan menggunakan gridview
+Answer : 
+langkah pertama : import material.dart package di dalam main.dart file
+                    import 'package:flutter/material.dart';
+langkah kedua : Buat void main method runApp(). Lalu Buat class bernama MyApp extends with StatelessWidget dan di dalam class itu terdapat class ChoiceCard untuk ke lengkah selanjutnya.
+                    void main() {
+                        runApp(MyApp());
+                    }
+
+                    class MyApp extends StatelessWidget {
+                    @override
+                    Widget build(BuildContext context) {
+                        final title = "GridView";
+
+                        return MaterialApp(
+                            title: title,
+                            home: Scaffold(
+                                appBar: AppBar(
+                                title: Text(title),
+                                ),
+                                body: GridView.count(
+                                    crossAxisCount: 4,
+                                    children: List.generate(choices.length, (index) {
+                                    return Center(
+                                        child: ChoiceCard(choice: choices[index]),
+                                    );
+                                    }))));
+                    }
+                    }
+langkah ketiga : buat class Grid dan terdapat 2 variabel yaitu title dan icon
+                    class Grid {
+                        Grid({required this.title, required this.icon});
+                    final String title;
+                    final IconData icon;
+                    }
+langkah keempat : membuat list grid class choices
+                    List<Grid> choices = [
+                        Grid(title: 'Pets', icon: Icons.pets),
+                        Grid(title: 'Pregnant Woman', icon: Icons.pregnant_woman),
+                        Grid(title: 'Spatial Audio Off', icon: Icons.spatial_audio_off),
+                        Grid(title: 'Rounded Corner', icon: Icons.rounded_corner),
+                        Grid(title: 'Rowing', icon: Icons.rowing),
+                        Grid(title: 'Timeline', icon: Icons.timeline),
+                        Grid(title: 'Update', icon: Icons.update),
+                        Grid(title: 'Clock', icon: Icons.access_time_filled),
+                        Grid(title: 'Hand', icon: Icons.back_hand),
+                        Grid(title: 'Euro', icon: Icons.euro),
+                        Grid(title: 'Google Translate', icon: Icons.g_translate),
+                        Grid(title: 'Remove Shopping Cart', icon: Icons.remove_shopping_cart),
+                        Grid(title: 'Restore', icon: Icons.restore_page),
+                        Grid(title: 'Speaker Notes Off', icon: Icons.speaker_notes_off),
+                        Grid(title: 'Delete', icon: Icons.delete_forever),
+                        Grid(title: 'Accessibility', icon: Icons.accessibility),
+                        Grid(title: 'Check', icon: Icons.check_circle_outline),
+                        Grid(title: 'Delete Outline', icon: Icons.delete_outline),
+                        Grid(title: 'Done', icon: Icons.done_outline),
+                        Grid(title: 'Maximize', icon: Icons.maximize),
+                        Grid(title: 'Minimize', icon: Icons.minimize),
+                        Grid(title: 'Offline Bolt Rounded', icon: Icons.offline_bolt_rounded),
+                        Grid(title: 'Swap Horizontal Circle', icon: Icons.swap_horizontal_circle),
+                        Grid(title: 'Accessible Forward', icon: Icons.accessible_forward),
+                    ];
+langkah kelima : buat class ChoiceCard extends StatelessWidget.
+                    class ChoiceCard extends StatelessWidget {
+                        ChoiceCard({Key? key, required this.choice}) : super(key: key);
+
+                        final Grid choice;
+
+                        @override
+                        Widget build(BuildContext context) {
+                            final TextStyle? textStyle = Theme.of(context).textTheme.headline4;
+
+                            return Card(
+                                color: Colors.white,
+                                child: Center(
+                                child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                        Expanded(
+                                            child:
+                                                Icon(choice.icon, size: 90.0, color: textStyle?.color)),
+                                        Text(choice.title, style: textStyle),
+                                    ]),
+                                ));
+                        }
+                    }
