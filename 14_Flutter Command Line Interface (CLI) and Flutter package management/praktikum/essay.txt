@@ -1,0 +1,104 @@
+Task 1 : membuat badge dan menggunakan package import 'package:badges/badges.dart';
+answer :
+langkah pertama : membuat badge nya di dalam pubspec.yaml
+                    dependencies:
+                    flutter:
+                        sdk: flutter
+                    
+                    badges: ^2.0.3
+langkah kedua : membuat import package badge dengan sebagai berikut
+                    import 'package:badges/badges.dart';
+langkah ketiga : buat badge dan chip nya di dalam class _MyHomePageState. Kemudian di wrap Column dan berada di posisi tengah. dikarenakan ada spasi antara atas dengan bawah maka berikut adalah caranya
+                    class _MyHomePageState extends State<MyHomePage> {
+                    @override
+                    void initState() {
+                        super.initState();
+                    }
+
+                    @override
+                    Widget build(BuildContext context) {
+                        return Scaffold(
+                        appBar: AppBar(
+                            title: Text("Badges"),
+                        ),
+                        body: Center(
+                            child: Column(
+                            children: [
+                                Spacer(
+                                flex: 5,
+                                ),
+                                Chip(
+                                padding: EdgeInsets.all(10),
+                                backgroundColor: Colors.deepPurple,
+                                label: Text('BADGE', style: TextStyle(color: Colors.white)),
+                                ),
+                                Spacer(),
+                                Badge(
+                                toAnimate: false,
+                                shape: BadgeShape.square,
+                                badgeColor: Colors.deepPurple,
+                                borderRadius: BorderRadius.circular(20),
+                                badgeContent:
+                                    Text('BADGE', style: TextStyle(color: Colors.white)),
+                                ),
+                                Spacer(
+                                flex: 5,
+                                ),
+                            ],
+                            ),
+                        ),
+                        );
+                    }
+                    }
+
+Task 2 : membuat barcode widget dan menggunakan package import 'package:barcode_widget/barcode_widget.dart';
+answer : 
+langkah pertama : membuat barcode nya di dalam pubspec.yaml
+                    dependencies:
+                        flutter:
+                            sdk: flutter
+                    barcode_widget: ^2.0.3
+                    
+                    badges: ^2.0.3
+langkah kedua : membuat import package badge dengan sebagai berikut
+                    import 'package:barcode_widget/barcode_widget.dart';
+langkah ketiga : buat BarcodeWidget nya di dalam class MyApp. 
+                    class MyApp extends StatelessWidget {
+                        const MyApp({super.key});
+
+                        @override
+                        Widget build(BuildContext context) {
+                            return MaterialApp(
+                            title: 'Barcode',
+                            debugShowCheckedModeBanner: false,
+                            home: Scaffold(
+                                body: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Center(
+                                        child: Wrap(
+                                    direction: Axis.vertical,
+                                    children: [
+                                        BarcodeWidget(
+                                        barcode: Barcode.code128(),
+                                        data: 'Alterra Academy',
+                                        errorBuilder: (context, error) => Center(child: Text(error)),
+                                        ),
+                                        BarcodeWidget(
+                                        barcode: Barcode.code128(),
+                                        data: 'Flutter Asik',
+                                        errorBuilder: (context, error) => Center(child: Text(error)),
+                                        ),
+                                        BarcodeWidget(
+                                        barcode: Barcode.code128(),
+                                        data: 'Rayi Handiva Putri',
+                                        errorBuilder: (context, error) => Center(child: Text(error)),
+                                        ),
+                                    ],
+                                    )),
+                                ],
+                                ),
+                            ),
+                            );
+                        }
+                    }
