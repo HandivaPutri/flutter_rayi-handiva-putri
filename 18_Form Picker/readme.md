@@ -34,7 +34,7 @@ body: Column(
 - MainAxisSize.max menempati semua space dari main axis
 - MainAxisSize.min tidak memiliki extra space, hanya untuk children nya saja. 
 
-#### MainAxisSize.max
+### MainAxisSize.max
 ```dart
 body: Row(
     mainAxisSize: MainAxisSize.max,
@@ -173,107 +173,92 @@ body: Row(
 ),
 ```
 
-## Flexible Widget
-- Membungkus widget lain sehingga child dari Flexible Widget menjadi flexible atau resizable
-- Sangat berguna untuk membuat aplikasi yang responsif 
-- Harus berada dalam turunan parent widget Row atau Column
-- Perubahan ukuran ditentukan dengan properti _fit_ dan *flex*
+## Date Picker
+- Widget dimana user bisa memasukkan tanggal
+- Tanggal kelahiran, waktu pemesanan tiket, Waktu reservasi restoran, jadwal meeting, dll
 
-### Fit Properti
-- Menentukan apakah flexible widget memenuhi extra space yang tersedia di main axis nya
-- Menerima nilai values berupa FlexFit.loose atau FlexFit.tight
-- FlexFit.loose akan memiliki ukuran minimum
-- FlexFit.tight akan memiliki ukuran maximum
+### Cara Membuat Date Picker
+- Menggunakan fungsi bawaan flutter showDatePicker
+- Fungsi showDatePicker memiliki tipe data future
+- Menampilkan dialog material design date picker
 
-#### Penggunaan Fit Properti
+Basic Code:
 ```dart
-Widget build(BuildContext context) {
-    return Container(
-        height: 50,
-        width: 50,
-        alignment: Aligment.center,
-        margin: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-            color: Colors.blue,
-            border: Border.all(),
-        ),
-        child: Text(
-            text, 
-            style: const TextStyle(color: Colors.white),
-        ),
-    );
-}
+final selectDate = await showDataPicker(
+    context: context,
+    initialDate: currentDate,
+    firstDate: DateTime(1990),
+    lastDate: DateTime(currentDate.year + 5),
+);
 ```
+- Menambahkan packages _intl_ di pubspec.yaml
 ```dart
-body: Row(
-    children: const[
-        BlueBox(text: 'A'),
-        Flexible(
-            fit: FlexFit.tight,
-            child: BlueBox(text: 'B'),
-        ),
-        Flexible(
-            fit: FlexFit.loose,
-            child: BlueBox(text: 'C'),
-        ),
-    ],
-),
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
 ```
+- Mempersiapkan variabel
+- Membangun UI
+- Menambahkan fungsi showDataPicker di dalam onPressed
+- Memanggil fungsi setState di dalam onPressed
 
-### Flex Properti
-- Menentukan perbandingan ukuran dari child widget nya
-- Menerima nilai values berupa integer
-- Membandingkan nilainya dengan flex properti lain
+### Hasil Akhir
+- Saat select button di tekan akan muncul dialog date picker
+- Tanggal yang ada di UI akan berubah sesuai dengan tanggal yang dipilih
 
-#### Penggunaan Flex Properti
-```dart
-body: Row(
-    children: const[
-        BlueBox(text: 'A'),
-        Flexible(
-            fit: FlexFit.tight,
-            flex: 2,
-            child: BlueBox(text: 'B'),
-        ),
-        Flexible(
-            fit: FlexFit.loose,
-            flex: 1,
-            child: BlueBox(text: 'C'),
-        ),
-    ],
-),
-```
+## Color Picker
+- Widget dimana user bisa memilih color
+- Penggunaan color picker bisa digunakan untuk berbagai macam kondisi
 
-#### Penggunaan Flexible
-- Flexible tanpa fixed height dan width
+### Cara Membuat Color Picker
+- Menggunakan package _flutter_colorpicker_
+- Menambahkan packages _flutter_colorpicker_ di pubspec.yaml
 ```dart
-Widget build(BuildContext context) {
-    return Container(
-        alignment: Aligment.center,
-        margin: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-            color: Colors.blue,
-            border: Border.all(),
-        ),
-        child: Text(
-            text, 
-            style: const TextStyle(color: Colors.white),
-        ),
-    );
-}
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
+  flutter_colorpicker: ^1.0.3
 ```
+- Mempersiapkan variabel
+- Membangun UI
+- Menambahkan fungsi showDialog di dalam onPressed dengan return widget AlertDialog
+- Import packages _flutter_colorpicker_ dalam file dart
 ```dart
-body: Row(
-    children: const[
-        Flexible(
-            child: BlueBox(text: 'A'),
-        ),
-        Flexible(
-            child: BlueBox(text: 'B'),
-        ),
-        Flexible(
-            child: BlueBox(text: 'C'),
-        ),
-    ],
-),
+import 'packages:flutter_colorpicker/flutter_colorpicker.dart';
 ```
+- Membuat kode untuk penggunaan packages _flutter_colorpicker_
+
+### Hasil Akhir
+- Packages _flutter_colorpicker_ memiliki custom widget yang dapat digunakan, seperti BlockPicker, ColorPicker, dan SlidePicker.
+
+## File Picker
+- Kemampuan widget untuk mengakses storage
+- Memilih dan membuka file
+
+### Cara Membuat File Picker
+- Menggunakan package _file_picker_ dan _open_file_
+- Menambahkan packages _file_picker_ dan _open_file_ di pubspec.yaml
+```dart
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
+  flutter_colorpicker: ^1.0.3
+  file_picker: ^4.3.3
+  open_file: ^3.2.1
+```
+- Import packages _file_picker_ dan _open_file_ dalam file dart
+```dart
+import 'package:file_picker/file_picker.dart';
+import 'package:open_file/open_file.dart';
+```
+- Membangun UI
+- Membuat fungsi untuk mengexplore dan memilih files dari storage
+- Memanggil fungsi _pickFile di dalam onPressed
+- Membuat fungsi untuk membuka files yang telah dipilih
+- Mengambil file dari object result dan Memanggil fungsi _openFile di dalam fungsi _pickFile
+
+### Hasil Akhir
+- Ketika button ditekan maka akan membuka storage device dan file yang dipilih akan terbuka
