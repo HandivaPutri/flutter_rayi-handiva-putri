@@ -1,0 +1,224 @@
+Task : 
+1. Buatlah halaman Contacts yang menampilkan data contacts menggunakan List View dan letakkan button untuk membuka halaman Create Contact!
+jawaban :
+langkah pertama : buat project baru dengan nama task. Kemudian buka file main.dart dan modifikasi menjadi
+                    import 'package:flutter/material.dart';
+                    import 'package:task/pages/contact_add.dart';
+                    import './pages/contact.dart';
+
+                    void main() => runApp(MyApp());
+
+                    class MyApp extends StatelessWidget {
+                    // final String parameter;
+                    // const MyApp({Key? key, required this.parameter}) : super(key: key);
+
+                    @override
+                    Widget build(BuildContext context) {
+                        return MaterialApp(
+                        // fungsi untuk menampilkan dan menghilangkan banner build sebelah kanan atas
+                        debugShowCheckedModeBanner: false,
+
+                        // Navigation dengan Named Routes
+                        // menentukan halaman yang pertama kali dibuka
+                        initialRoute: '/',
+                        routes: {
+                            '/': (context) => Contact(),
+                            '/contactadd': (context) => ContactAdd(),
+                        },
+                        );
+                    }
+                    }
+
+langkah kedua: untuk menampilkan data kontak maka akan buatlah file baru bernama contact.dart di dalam folder lib/pages dan tambahkan struktur berikut
+                import 'package:flutter/material.dart';
+                import '../models/contact_model.dart';
+                import './contact_add.dart';
+
+                class Contact extends StatelessWidget {
+                    final data = [
+                        ContactModel(
+                        id: "1",
+                        Name: "Jojo",
+                        Contact: "082134567321",
+                        ),
+                        ContactModel(
+                        id: "2",
+                        Name: "Snowy",
+                        Contact: "087889763422",
+                        ),
+                        ContactModel(
+                        id: "3",
+                        Name: "Bocil",
+                        Contact: "085678343576",
+                        ),
+                    ];
+
+                    @override
+                    Widget build(BuildContext context) {
+                        return Scaffold(
+                        appBar: AppBar(
+                            title: Text('Contacts'),
+                            backgroundColor: Colors.teal,
+                        ),
+                        // Navigation dengan Named Routes
+                        floatingActionButton: FloatingActionButton(
+                            backgroundColor: Colors.teal,
+                            child: Text('+'),
+                            onPressed: () {
+                            //BUAT NAVIGASI UNTUK BERPINDAH KE HALAMAN CONTACTADD
+                            Navigator.of(context).pushNamed('/contactadd');
+                            },
+                        ),
+                        // // Navigation tanpa Named Routes
+                        // floatingActionButton: FloatingActionButton(
+                        //   backgroundColor: Colors.teal,
+                        //   child: Text('+'),
+                        //   onPressed: () {
+                        //     //BUAT NAVIGASI UNTUK BERPINDAH KE HALAMAN EMPLOYEEADD
+                        //     Navigator.of(context).push(
+                        //       MaterialPageRoute(
+                        //         builder: (_) => ContactAdd(parameter: ),
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
+                        body: ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (context, i) {
+                            return Card(
+                                elevation: 8,
+                                child: ListTile(
+                                title: Text(
+                                    data[i].Name,
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Text('No. Telp: ${data[i].Contact}'),
+                                ),
+                            );
+                            },
+                        ),
+                        );
+                    }
+                }
+
+langkah ketiga: untuk format struktur data yang diinginkan, maka buat file contact_model.dart di dalam folder lib/models dan tambahkan code berikut
+                class ContactModel {
+                    String id;
+                    String Name;
+                    String Contact;
+
+                    ContactModel({required this.id, required this.Name, required this.Contact});
+
+                    factory ContactModel.fromJson(Map<String, dynamic> json) => ContactModel(
+                        id: json['id'], Name: json['name'], Contact: json['contact']);
+                }
+
+langkah keempat : dikarenakan ingin membuat ke halaman baru bernama create contact maka buat file contact_add.dart di dalam folder lib/pages dan tambahkan code berikut
+                    import 'package:flutter/material.dart';
+
+                        class ContactAdd extends StatefulWidget {
+                        @override
+                        _ContactAddState createState() => _ContactAddState();
+                        }
+
+                    class _ContactAddState extends State<ContactAdd> {
+                        TextEditingController controllerNama = TextEditingController();
+                        TextEditingController controllerTelp = TextEditingController();
+
+                        @override
+                        Widget build(BuildContext context) {
+                            return Scaffold(
+                            appBar: AppBar(
+                                title: Text("Create Contact"),
+                                backgroundColor: Colors.teal,
+                            ),
+                            body: ListView(
+                                children: [
+                                Container(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Column(
+                                    children: [
+                                        TextField(
+                                        controller: controllerNama,
+                                        decoration: InputDecoration(
+                                            hintText: "Nama",
+                                            labelText: "Nama",
+                                            border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(20.0),
+                                            ),
+                                        ),
+                                        ),
+                                        Padding(
+                                        padding: EdgeInsets.only(top: 20.0),
+                                        ),
+                                        TextField(
+                                        controller: controllerTelp,
+                                        decoration: InputDecoration(
+                                            hintText: "No. Telp",
+                                            labelText: "No. Telp",
+                                            border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(20.0),
+                                            ),
+                                        ),
+                                        ),
+                                        Padding(
+                                        padding: EdgeInsets.only(top: 20.0),
+                                        ),
+                                        ElevatedButton(
+                                        child: Text('Submit'),
+                                        onPressed: () {},
+                                        ),
+                                    ],
+                                    ),
+                                ),
+                                ],
+                            ),
+                            );
+                        }
+                    }
+
+2. Lakukan navigation di atas dengan dan tanpa named routes!
+jawaban : 
+langkah  pertama : membuat navigation dengan named routes di dalam contact.dart 
+                    // Navigation dengan Named Routes
+                        floatingActionButton: FloatingActionButton(
+                            backgroundColor: Colors.teal,
+                            child: Text('+'),
+                            onPressed: () {
+                            //BUAT NAVIGASI UNTUK BERPINDAH KE HALAMAN CONTACTADD
+                            Navigator.of(context).pushNamed('/contactadd');
+                            },
+                        ),
+langkah kedua : panggil routes nya di main.dart dengan cara sebagai berikut
+                @override
+                    Widget build(BuildContext context) {
+                        return MaterialApp(
+                            // fungsi untuk menampilkan dan menghilangkan banner build sebelah kanan atas
+                            debugShowCheckedModeBanner: false,
+
+                            // Navigation dengan Named Routes
+                            // menentukan halaman yang pertama kali dibuka
+                            initialRoute: '/',
+                            routes: {
+                                '/': (context) => Contact(),
+                                '/contactadd': (context) => ContactAdd(),
+                            },
+                        );
+                    }
+langkah ketiga : membuat navigation tanpa routes di dalam contact.dart
+                 // Navigation tanpa Named Routes
+                    floatingActionButton: FloatingActionButton(
+                        backgroundColor: Colors.teal,
+                        child: Text('+'),
+                        onPressed: () {
+                        //BUAT NAVIGASI UNTUK BERPINDAH KE HALAMAN EMPLOYEEADD
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                            builder: (_) => ContactAdd(parameter: ),
+                            ),
+                        );
+                        },
+                    ),
+langkah keempat : buat parameter di main.dart
+                    final String parameter;
+                    const MyApp({Key? key, required this.parameter}) : super(key: key);
