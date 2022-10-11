@@ -1,0 +1,35 @@
+Task: 
+1. Buatlah gallery yang menampilkan gambar-gambar!
+Jawab : buatlah project baru bernama bottom. Disini saya menggunakan project di section 16. 
+2. Buatlah agar tiap gambar dapat ditampilkan pada bottom sheet saat ditekan!
+Jawab: Jika sudah, maka buatlah widget InkWell dengan cara wrap(bungkus) CustomCard dengan wrap with widget kemudian widget nya diganti dengan InkWell dan tambahkan child pada CustomCard.
+        kemudian buat fungsi showModalBottomSheet untuk menampilkan bottom sheet nya. Berikut adalah code dari bottom sheet: 
+        InkWell(
+                    onTap: () {
+                    // onTap berfungsi untuk ditekan biasa 
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                        return Image.network(
+                            "https://cdn.pixabay.com/photo/2018/02/01/14/09/yellow-3123271_960_720.jpg");
+                        },
+                    );
+                    },
+                    
+                    child: CustomCard(
+                        title: "Potret Alam Indah",
+                        image:
+                            "https://cdn.pixabay.com/photo/2018/02/01/14/09/yellow-3123271_960_720.jpg"),
+        ),
+3. Buatlah agar tiap gambar dapat ditampilkan pada dialog saat ditekan!
+Jawab : Untuk dialog gunakan code dibawah berikut:
+        onLongPress: () {
+        // onLongPress berfungsi untuk ditekan lama
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                        content: Image.network(
+                            "https://cdn.pixabay.com/photo/2018/02/01/14/09/yellow-3123271_960_720.jpg"),
+                        ),
+                    );
+        },
