@@ -123,43 +123,6 @@ class _MyAppState extends State<MyApp> {
                 image:
                     "https://cdn.pixabay.com/photo/2016/09/18/23/23/sugarloaf-mountain-1679285__340.jpg"),
           ),
-
-          // widget(
-          //   child: ElevatedButton(
-          //           onPressed: () {
-          //   showModalBottomSheet(
-          //       context: context,
-          //       builder: (context) {
-          //         return Column(
-          //           mainAxisSize: MainAxisSize.min,
-          //           children: <Widget>[
-          //             ListTile(
-          //               leading: new Icon(Icons.photo),
-          //               title: new Text('Photo'),
-          //               onTap: () {
-          //                 Navigator.pop(context);
-          //               },
-          //             ),
-          //             ListTile(
-          //               leading: new Icon(Icons.music_note),
-          //               title: new Text('Music'),
-          //               onTap: () {
-          //                 Navigator.pop(context);
-          //               },
-          //             ),
-          //             ListTile(
-          //               leading: new Icon(Icons.videocam),
-          //               title: new Text('Video'),
-          //               onTap: () {
-          //                 Navigator.pop(context);
-          //               },
-          //             ),
-          //           ],
-          //         );
-          //       },
-          //       );
-          //         ,
-          // ),
         ],
       ),
     );
