@@ -4,12 +4,12 @@ Nomor Urut : 1_019FLC_34
 
 Nama : Rayi Handiva Putri
 
-## REST API 
+## 1. REST API 
 (Representational State Transfer Application Programming Interface)
 > - Arsitektural yang memisahkan tampilan dengan proses bisnis
 > - Bagian tampilan dengan proses bisnis berkirim data melalui HTTP Request
 
-## HTTP
+## 2. HTTP
 > **HTTP** merupakan protokol yang digunakan untuk berkirim data pada internet, biasanya data tersebut berbentuk media web
 
 ### Pola Komunikasi
@@ -34,7 +34,7 @@ Nama : Rayi Handiva Putri
 - Body 
     > Data yang disertakan bersama response
 
-## Dio
+## 3. Dio
 > **Dio** merupakan sebagai HTTP Client, dan dimanfaatkan untuk melakukan REST API
 
 ### Instalasi 
@@ -58,7 +58,79 @@ Dio()
 {id: 3, name: Isa Bell, phone: 0898736763736}]
 ```
 
-## JSON
+### Penggunaan Method GET
+Penggunaan _dio_ dengan method GET
+```dart
+import 'package:dio/dio.dart';
+
+// dio: HTTP Client
+final Dio dio = Dio();
+
+// Response: bentuk tipe data dari hasil return fungsi dio.get()
+// get: HTTP method yang digunakan
+final Response response = await dio.get(
+    'https://reqres.in/api/users'
+    //url yang digunakan
+);
+```
+
+### Penggunaan Method POST
+Penggunaan _dio_ dengan method POST
+```dart
+import 'package:dio/dio.dart';
+
+// dio: HTTP Client
+final Dio dio = Dio();
+
+// Response: bentuk tipe data dari hasil return fungsi dio.get()
+// get: HTTP method yang digunakan
+final Response response = await dio.post(
+    'https://reqres.in/api/users',
+    //url yang digunakan
+    data: {
+        'name': 'morpheus',
+        'job': 'leader',
+    },
+);
+```
+
+### Penggunaan Method PUT
+Penggunaan _dio_ dengan method PUT
+```dart
+import 'package:dio/dio.dart';
+
+// dio: HTTP Client
+final Dio dio = Dio();
+
+// Response: bentuk tipe data dari hasil return fungsi dio.get()
+// get: HTTP method yang digunakan
+final Response response = await dio.put(
+    'https://reqres.in/api/users/2',
+    //url yang digunakan
+    data: {
+        'name': 'morpheus',
+        'job': 'zion resident',
+    },
+);
+```
+
+### Penggunaan Method DELETE
+Penggunaan _dio_ dengan method DELETE
+```dart
+import 'package:dio/dio.dart';
+
+// dio: HTTP Client
+final Dio dio = Dio();
+
+// Response: bentuk tipe data dari hasil return fungsi dio.get()
+// get: HTTP method yang digunakan
+final Response response = await dio.delete(
+    'https://reqres.in/api/users/2',
+    //url yang digunakan
+);
+```
+
+## 4. JSON
 > - Umum digunakan pada REST API
 > - Cara penulisan data
 > - Javascript Object Notation
